@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revanth Myana's Personal Website</title>
+    <link id="mainStyleSheet" rel="stylesheet" href="style.css"></link>
+    <link rel="icon" href="images/logo.jpg">
+    <script src="https://kit.fontawesome.com/f6d4381017.js" crossorigin="anonymous"></script>
+    <script src="toggle.js"></script>
+</head>
+<body>
+    <div id="home"></div>
+    <div class="container">
+        <nav>
+            <button onclick="toggleStyleSheet()" type="button" class="toggle">Toggle Style</button>
+            <a href="index.html"><img src="images/logo.jpg" id="logo"></a>
+            <ul>
+                <li><a style="--i: 1" href="index.html">Home</a></li>
+                <li><a style="--i: 2" href="portfolio.html">Portfolio</a></li>
+                <li><a style="--i: 3" href="qualifications.html">Qualifications</a></li>
+                <li><a style="--i: 4" href="service.html">Service</a></li>
+                <li><a style="--i: 5" href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <div class="header">
+            <img src="images/portrait.JPG" id="portrait">
+            <p><br>Hi, I'm Revanth Myana</p>  
+            <p>And I'm <span id="type-animation"></span></p>
+            <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+            <script class="header-script">
+                var typed = new Typed('#type-animation', {
+                strings: ['a Student at Texas A&amp;M^1000', 'a Computer Science Major^1000', 'an Aspiring Software Developer^1000', 'a Junior Graduating in May 2025'],
+                typeSpeed: 50,
+                backSpeed: 50,
+                loop: true,
+                });
+            </script>
+        </div>
+    </div>
+    <div class="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-label">
+                    <h1 class="text-1" style="font-size: 3vw;">Contact Me</h1>
+                    <p class="text-2"><i class="fa-solid fa-paper-plane"></i>myana.revanth@gmail.com</p>
+                    <p class="text-2"><i class="fa-solid fa-square-phone"></i>+1 (510)-556-9659</p>
+                    <div class="social-icons">
+                        <a style="--i: 1" href="https://m.facebook.com/people/Revanth-Myana/100009210128517/"><i class="fa-brands fa-square-facebook"></i></a>
+                        <a style="--i: 2" href="https://twitter.com/revanth_myana"><i class="fa-brands fa-twitter-square"></i></a>
+                        <a style="--i: 3" href="https://www.instagram.com/revanth_myana/?hl=en"><i class="fa-brands fa-square-instagram"></i></a>
+                        <a style="--i: 4" href="https://www.linkedin.com/in/revanth-myana-0ab4171a9"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form name="submit-to-google-sheet">
+                        <input type="name" name="Name" placeholder="Your Name" required>
+                        <input type="email" name="Email" placeholder="Your Email" required>
+                        <textarea name="Message" rows="6" placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn">Submit</button>
+                    </form>
+                    <span id="msg"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbw9vrhdmvJZtmpa9lrkieZe4XpFQf2OcxIMzehNhF6XLQjBwi5VpKEYAJmtI9duz4kRlQ/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+    
+    form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Message Sent Successfully!"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            }, 5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+</script>
+</body>
+</html>

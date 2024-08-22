@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revanth Myana's Personal Website</title>
+    <link id="mainStyleSheet" rel="stylesheet" href="style.css"></link>
+    <link rel="icon" href="images/logo.jpg">
+    <script src="https://kit.fontawesome.com/f6d4381017.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <button onclick="toggleStyleSheet()" type="button" class="toggle">Toggle Style</button>
+            <a href="index.html"><img src="images/logo.jpg" id="logo"></a>
+            <ul>
+                <li><a style="--i: 1" href="index.html">Home</a></li>
+                <li><a style="--i: 2" href="portfolio.html">Portfolio</a></li>
+                <li><a style="--i: 3" href="qualifications.html">Qualifications</a></li>
+                <li><a style="--i: 4" href="service.html">Service</a></li>
+                <li><a style="--i: 5" href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <div class="project">
+            <h1><a href="https://github.com/spencertlogan/HH22SpaceTravelers">2022 HowdyHack Hackathon</a></h1>
+            <p><br>I was a project member on the 2022 HowdyHack hackathon team hosted by Texas A&M University. Our project, called Space Travelers, 
+                is a side-scroll arcade-style game that utilizes the Pygame library within Python. The game has many features. These include a fully 
+                functional UI, complete with a main menu, settings page, and pause menu, allowing the user full control of the game. Additionally, 
+                this game features an AI-based player tracking system that adds a level of difficulty to the game with the meteors becoming faster 
+                and more targeting towards the player as the user progresses through the game. And last, but certainly not least, Space Traveler 
+                features a custom soundtrack!</p>
+                <img src="images/howdyhack.jpg" class="project1-img">
+        </div>
+        <div class="project">
+            <h1><a href="https://www.northropgrumman.com/what-we-do">NGC Internship Project</a></h1>
+            <p><br>During my summer internship with Northrop Grumman, I helped construct a lightweight, 
+                extensible Python API that served as a cross-compiler within the company. Using my API, 
+                users were able to input required artifacts, targets, toolchains, dependencies, and 
+                program-specific build information. Then, the API sets up build configurations based 
+                on these parameters and invokes a script that automatically generate a build recipe for 
+                each configuration, such as Makefiles for Unix-based systems and VS projects for Windows systems.
+                This allowed programs across the enterprise to utilize and extend common codebases for their 
+                specific targets, reducing code redunancy while increasing overall efficiency and maintainability.</p>
+                <img src="images/ngc.png" class="project2-img">
+        </div>
+        <div class="project">
+            <h1><a href="https://www.youtube.com/watch?v=1oZY2e25VUw">Speedcubing Hub &lpar;FUTURE&rpar;</a></h1>
+            <p><br>A project that I definitely want to take on in the future is creating a mobile or web-based application that acts as a one-stop 
+                shop for all things speedcubing. Speedcubing is a sport that involves solving a variety of combination puzzles, such as a Rubik's Cube, 
+                as fast as you can. This application would, in a sense, be a hub for speedcubing enthusiasts and feature various useful tools. For example, 
+                a Timer that allows users to practice speedcubing and track their progress. This timer would keep track of all solves for all types of puzzles, 
+                and provide statistics based on this data to the user. There would also be a Tutorial mode which allows newcomers to follow step by step 
+                instructions to learn how to solve, say, a Rubik's Cube. Other capabilities would include a shop database that contains links to external 
+                websites for users to purchase cubes. Ideally, the tech stack I would use for this project is HTML/CSS/JavaScript for the Frontend and Python/SQL for the backend.</p>
+                <img src="images/cube.jpeg" class="project3-img">
+        </div>
+    </div>
+    <div class="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-label">
+                    <h1 class="text-1" style="font-size: 3vw;">Contact Me</h1>
+                    <p class="text-2"><i class="fa-solid fa-paper-plane"></i>myana.revanth@gmail.com</p>
+                    <p class="text-2"><i class="fa-solid fa-square-phone"></i>+1 (510)-556-9659</p>
+                    <div class="social-icons">
+                        <a style="--i: 1" href="https://m.facebook.com/people/Revanth-Myana/100009210128517/"><i class="fa-brands fa-square-facebook"></i></a>
+                        <a style="--i: 2" href="https://twitter.com/revanth_myana"><i class="fa-brands fa-twitter-square"></i></a>
+                        <a style="--i: 3" href="https://www.instagram.com/revanth_myana/?hl=en"><i class="fa-brands fa-square-instagram"></i></a>
+                        <a style="--i: 4" href="https://www.linkedin.com/in/revanth-myana-0ab4171a9"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form name="submit-to-google-sheet">
+                        <input type="name" name="Name" placeholder="Your Name" required>
+                        <input type="email" name="Email" placeholder="Your Email" required>
+                        <textarea name="Message" rows="6" placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn">Submit</button>
+                    </form>
+                    <span id="msg"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbw9vrhdmvJZtmpa9lrkieZe4XpFQf2OcxIMzehNhF6XLQjBwi5VpKEYAJmtI9duz4kRlQ/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+    
+    form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Message Sent Successfully!"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            }, 5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+</script>
+<script src="toggle.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revanth Myana's Personal Website</title>
+    <link id="mainStyleSheet" rel="stylesheet" href="style.css"></link>
+    <link rel="icon" href="images/logo.jpg">
+    <script src="https://kit.fontawesome.com/f6d4381017.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <button onclick="toggleStyleSheet()" type="button" class="toggle">Toggle Style</button>
+            <a href="index.html"><img src="images/logo.jpg" id="logo"></a>
+            <ul>
+                <li><a style="--i: 1" href="index.html">Home</a></li>
+                <li><a style="--i: 2" href="portfolio.html">Portfolio</a></li>
+                <li><a style="--i: 3" href="qualifications.html">Qualifications</a></li>
+                <li><a style="--i: 4" href="service.html">Service</a></li>
+                <li><a style="--i: 5" href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <div class="qualifications">
+            <h1>Technical Skills</h1>
+            <div class="skillBox">
+                <p>Python</p>
+                <p>Advanced</p>
+                <div class="skill">
+                    <div class="skill-level" style="width: 95%;"></div>
+                </div>
+            </div>
+            <div class="skillBox">
+                <p>Java</p>
+                <p>Advanced</p>
+                <div class="skill">
+                    <div class="skill-level" style="width: 90%;"></div>
+                </div>
+            </div>
+            <div class="skillBox">
+                <p>HTML</p>
+                <p>Proficient</p>
+                <div class="skill">
+                    <div class="skill-level" style="width: 70%;"></div>
+                </div>
+            </div>
+            <div class="skillBox">
+                <p>CSS</p>
+                <p>Proficient</p>
+                <div class="skill">
+                    <div class="skill-level" style="width: 65%;"></div>
+                </div>
+            </div>
+            <div class="skillBox">
+                <p>C++</p>
+                <p>Advanced</p>
+                <div class="skill">
+                    <div class="skill-level" style="width: 95%;"></div>
+                </div>
+            </div>
+            <div class="skillBox">
+                <p>JavaScript</p>
+                <p>Proficient</p>
+                <div class="skill">
+                    <div class="skill-level" style="width: 60%;"></div>
+                </div>
+            </div>
+            <div class="skillBox">
+                <p>Make</p>
+                <p>Proficient</p>
+                <div class="skill">
+                    <div class="skill-level" style="width: 65%;"></div>
+                </div>
+            </div>
+            <div class="skillBox">
+                <p>XML</p>
+                <p>Proficient</p>
+                <div class="skill">
+                    <div class="skill-level" style="width: 55%;"></div>
+                </div>
+            </div>
+            <p>
+                <br><strong>Tools and Technologies:</strong><br>Git, Jira, Agile, Confluence, Bitbucket, Linux, GCC, Visual Studio, AutoCAD, Adobe (Illustrator, Photoshop, Animate), Microsoft (Word, Excel, PowerPoint)
+            </p>
+            <h1 class="interest"><br>Areas of Interest</h1>
+            <p class="interest2"><br>Embedded Systems, Artificial Intelligence, Machine Learning, Cloud Computing, UI/UX Design
+            </p>
+            <button type="view" class="btn"><a href="https://drive.google.com/file/d/1E_UV1SUzeKpsMje-bbnWNQ3GPV_OsWVd/view?usp=sharing">View/Download Resume</a></button>
+        </div>
+    </div>
+    <div class="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-label">
+                    <h1 class="text-1" style="font-size: 3vw;">Contact Me</h1>
+                    <p class="text-2"><i class="fa-solid fa-paper-plane"></i>myana.revanth@gmail.com</p>
+                    <p class="text-2"><i class="fa-solid fa-square-phone"></i>+1 (510)-556-9659</p>
+                    <div class="social-icons">
+                        <a href="https://m.facebook.com/people/Revanth-Myana/100009210128517/"><i class="fa-brands fa-square-facebook"></i></a>
+                        <a href="https://twitter.com/revanth_myana"><i class="fa-brands fa-twitter-square"></i></a>
+                        <a href="https://www.instagram.com/revanth_myana/?hl=en"><i class="fa-brands fa-square-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/revanth-myana-0ab4171a9"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form name="submit-to-google-sheet">
+                        <input type="name" name="Name" placeholder="Your Name" required>
+                        <input type="email" name="Email" placeholder="Your Email" required>
+                        <textarea name="Message" rows="6" placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn">Submit</button>
+                    </form>
+                    <span id="msg"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbw9vrhdmvJZtmpa9lrkieZe4XpFQf2OcxIMzehNhF6XLQjBwi5VpKEYAJmtI9duz4kRlQ/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+    
+    form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Message Sent Successfully!"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            }, 5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+</script>
+<script src="toggle.js"></script>
+</body>
+</html>
